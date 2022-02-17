@@ -1,0 +1,28 @@
+{
+  "name": "teamprodev/laravel_payment_clickuz",
+  "description": "description",
+  "minimum-stability": "stable",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Abram73",
+      "email": "abram4ik73@gmail.com",
+      "homepage": "https://github.com/Abram73"
+    }
+  ],
+  "require": {
+    "php": "^7.3|^8.0"
+  },
+  "autoload": {
+    "psr-4": {
+      "Teamprodev\\Laravel_Payment_Clickuz\\": "src"
+    }
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "Teamprodev\\Laravel_Payment_Clickuz\\Providers\\ClickuzServiceProvider"
+      ]
+    }
+  }
+}
