@@ -35,10 +35,5 @@ class ClickuzServiceProvider extends ServiceProvider
             __DIR__.'/../config/clickuz.php' => config_path('clickuz.php'),
         ]);
 
-        if ($this->app->runningInConsole()) {
-            $this->commands([
-                \Abram73\Clickuz\Console\Commands\ClickuzCommand::class,
-            ]);
-        }
     }
 }
