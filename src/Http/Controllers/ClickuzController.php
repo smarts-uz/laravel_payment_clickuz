@@ -3,18 +3,12 @@
 namespace Teamprodev\Laravel_Payment_Clickuz\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Abram73\Clickuz\Models\Prepare;
-use Abram73\Clickuz\Models\Complete;
-use Abram73\Clickuz\Models\ClickTransaction;
+use Teamprodev\Laravel_Payment_Clickuz\Models\Complete;
+use Teamprodev\Laravel_Payment_Clickuz\Models\ClickTransaction;
 use Illuminate\Support\Facades\Auth;
 
 class ClickuzController extends Controller
 {
-
-    public function index(){
-
-        return view('clickuz::index');
-    }
 
     public function pay(Request $request){
 
@@ -33,7 +27,7 @@ class ClickuzController extends Controller
 
     public function prepare(Request $request){
 
-        $new_prepare = Prepare::create([
+        $new_prepare = Complete::create([
             'click_trans_id'=> $request->get("click_trans_id"),
             'service_id'=> $request->get("service_id"),
             'click_paydoc_id'=> $request->get("click_paydoc_id"),
@@ -74,13 +68,23 @@ class ClickuzController extends Controller
             'sign_string'=> $request->get("sign_string"),
         ]);
 
+return ClickuzController::statusup($new_complete);
+
+    }
+
+    public function statusup($new_complete){        
+
         $click_trans_id = $new_complete->click_trans_id;
         $merchant_trans_id = $new_complete->merchant_trans_id;
         $merchant_confirm_id = $new_complete->id;
         $error = $new_complete->error;
         $error_note = $new_complete->error_note;
 
-//Here you should write code to update the status of a transaction by merchant_trans_id
+        // A certain area for writing additional operations
+        // Beginning
+
+        // The end
+        
         ClickTransaction::where('id', $merchant_trans_id)->update(['status' => 1]);
 
         return ['click_trans_id' => $click_trans_id,'merchant_trans_id' => $merchant_trans_id,'merchant_confirm_id' => $merchant_confirm_id,'error' => $error,'error_note' => $error_note];

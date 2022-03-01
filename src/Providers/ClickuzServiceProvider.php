@@ -24,15 +24,10 @@ class ClickuzServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->loadRoutesFrom(__DIR__.'/../routes/clickuz.php');
-        $this->loadViewsFrom(__DIR__.'/../resources/views', 'clickuz');
         $this->loadMigrationsFrom(__DIR__.'/../database/migrations');
 
         $this->publishes([
-            __DIR__.'/../resources/views' => resource_path('views/vendor/clickuz'),
-        ]);
-
-        $this->publishes([
-            __DIR__.'/../config/clickuz.php' => config_path('clickuz.php'),
+            __DIR__.'/../Http/Controllers/ClickuzController.php' => app_path('Http/Controllers/ClickuzController.php'),
         ]);
 
     }
