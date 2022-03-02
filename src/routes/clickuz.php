@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use Teamprodev\Laravel_Payment_Clickuz\Http\Controllers\ClickuzController;
+use App\Http\Controllers\ClickuzController;
 
 
 Route::get('/click_pay', [ClickuzController::class, 'pay']);

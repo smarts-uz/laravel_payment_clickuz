@@ -1,6 +1,6 @@
 <?php
 
-namespace Teamprodev\Laravel_Payment_Clickuz\Http\Controllers;
+namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Teamprodev\Laravel_Payment_Clickuz\Models\Complete;
@@ -13,12 +13,12 @@ class ClickuzController extends Controller
     public function pay(Request $request){
 
         $new_article = ClickTransaction::create([
-            'user_id' => Auth::id(),
+            'user_id' => $request->get("user_id"),
             'amount'  => $request->get("amount"),
         ]);
 
         $amount = $request->get("amount");
-        $article_id = $new_article;
+        $article_id = $new_article->id;
         $return_url = env('CLICKUZ_RETURN_URL');
         $service_id = env('CLICKUZ_SERVICE_ID');
         $merchant_id = env('CLICKUZ_MERCHANT_ID');
