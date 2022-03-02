@@ -17,7 +17,7 @@ class CreateClickTransactionsTable extends Migration
             $table->id();
             $table->integer('user_id');
             $table->float('amount', 8, 2);
-            $table->tinyInteger('status');
+            $table->tinyInteger('status')->default('0');
             $table->timestamps();
         });
     }

@@ -19,7 +19,7 @@ class CreateCompletesTable extends Migration
             $table->integer('service_id');
             $table->integer('click_paydoc_id');
             $table->string('merchant_trans_id', 255);
-            $table->integer('merchant_prepare_id');
+            $table->integer('merchant_prepare_id')->nullable();
             $table->float('amount', 8, 2);
             $table->integer('action');
             $table->integer('error');
